@@ -27,11 +27,33 @@ const { title } = Astro.props;
     <main>
       <slot />
     </main>
+
+    <div id="fixTicker">
+      <span>
+        8=FIXT.1.1 35=W 55=AL30 44=123.4500 | 
+        8=FIXT.1.1 35=8 39=2 ExecType=Filled 151=0 14=80 | 
+        8=FIXT.1.1 35=X MarketDataIncrementalRefresh 268=2 269=0 44=123.5000 269=1 44=123.6000 | 
+        8=FIXT.1.1 35=3 58=ThrottleExceeded CancelRejected | 
+        8=FIXT.1.1 35=W 55=GGAL 44=654.1000 268=3 269=0 269=1 269=2 |
+        8=FIXT.1.1 35=8 150=F Canceled ClOrdID=847201 Seq=409
+      </span>
+    </div>
+
     <footer>
     © {new Date().getFullYear()} • Juan Cruz Miranda • Desarrollador HFT y Sistemas de Baja Latencia
     <br />
     <a href="https://github.com/TU_USUARIO" target="_blank">GitHub</a> •
     <a href="https://www.linkedin.com/in/TU_USUARIO" target="_blank">LinkedIn</a>
     </footer>
+    <script>
+      const perfNodes = document.querySelectorAll("[data-perf]");
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add("active");
+        });
+      }, { threshold: 0.4 });
+
+      perfNodes.forEach(n => io.observe(n));
+    </script>
   </body>
 </html>

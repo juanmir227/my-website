@@ -81,6 +81,7 @@ footer {
   color: var(--text-muted);
   font-size: 0.95rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 58px; /* separación correcta entre ticker y texto del footer */
 }
 footer a {
   color: var(--accent);
@@ -392,4 +393,62 @@ footer {
 .cta-secondary:hover {
   background: rgba(78, 168, 255, 0.15);
   transform: translateY(-2px);
+}
+
+/* FIX TICKER — barra horizontal de mensajes FIX */
+#fixTicker {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 12px 0;
+  margin-top: 30px;
+  font-size: 0.88rem;
+  font-family: "JetBrains Mono", monospace;
+  backdrop-filter: blur(6px);
+}
+
+#fixTicker span {
+  display: inline-block;
+  color: #90cdfc;
+  opacity: 0.82;
+  animation: tickerScroll 20s linear infinite, flicker 2.4s ease-in-out infinite;
+  padding-left: 100%; /* arranca fuera de pantalla */
+}
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+[data-perf] {
+  position: relative;
+}
+
+[data-perf]::after {
+  content: attr(data-perf);
+  position: absolute;
+  right: -8px;
+  top: -10px;
+  font-size: 0.75rem;
+  opacity: 0;
+  color: var(--accent);
+  pointer-events: none;
+  transition: 0.4s ease-out;
+  animation: flicker 2.4s ease-in-out infinite;
+}
+[data-perf].active::after {
+  opacity: 0.8;
+  transform: translateY(-4px);
 }
