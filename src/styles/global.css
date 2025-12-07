@@ -1258,3 +1258,12 @@ footer {
   transform: translateY(-1px);
   filter: drop-shadow(0 0 10px rgba(78, 168, 255, 0.55));
 }
+
+/* Campo honeypot completamente oculto (pero accesible a bots) */
+.hidden-honeypot {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}

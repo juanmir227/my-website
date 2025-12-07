@@ -1,16 +1,28 @@
 ---
+import SEO from "../components/SEO.astro";
 const { title } = Astro.props;
+import "../styles/global.css";
+
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-	<link rel="stylesheet" href="/src/styles/global.css">
+
+    <script defer data-domain="TU-DOMINIO.com" src="https://plausible.io/js/script.js"></script>
+
+    <SEO 
+      title={title}
+      description="Infraestructura HFT, C++, FIX, baja latencia"
+      ogImage={`/og/${encodeURIComponent(title)}.png`}
+    />
+
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
+
 
   <script src="/src/scripts/copy-code.js" defer></script>
   <body>

@@ -138,6 +138,10 @@ import Layout from "../layouts/Layout.astro";
         method="POST"
         class="contact-form"
       >
+        <div class="hidden-honeypot">
+          <label for="website">Website (dejar vacío)</label>
+          <input type="text" id="website" name="website" autocomplete="off">
+        </div>
         <div class="field">
           <label for="name">Nombre</label>
           <input
@@ -181,6 +185,22 @@ import Layout from "../layouts/Layout.astro";
           Enviar mensaje
         </button>
       </form>
+      <script>
+        const form = document.getElementById("contactForm");
+
+        form.addEventListener("submit", async (e) => {
+          const honeypot = form.querySelector("input[name='website']").value;
+
+          // SI EL HONEYPOT TIENE TEXTO → BOT DETECTADO
+          if (honeypot.trim() !== "") {
+            e.preventDefault();
+            console.warn("Bot detected — form blocked.");
+            return;
+          }
+
+          // Enviar normalmente (Formspree actuará)
+        });
+      </script>
     </div>
   </section>
   <script>

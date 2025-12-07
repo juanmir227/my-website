@@ -3,6 +3,7 @@ title: "Diseño de Estructuras de Baja Latencia en C++ para HFT"
 description: "Cómo diseñar estructuras de datos cache-friendly, sin heap y aptas para procesar miles de mensajes FIX por segundo."
 pubDate: 2025-02-01
 category: "HFT"
+ogImage: true
 ---
 
 ## Introducción

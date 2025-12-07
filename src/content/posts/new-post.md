@@ -3,6 +3,7 @@ title: "Post de Prueba — Visual Test del Reading Layout"
 description: "Ensayo visual para validar estilos de párrafos, código, tablas, imágenes y listas."
 pubDate: 2025-02-20
 category: "Infra"
+ogImage: true
 ---
 
 ## Introducción

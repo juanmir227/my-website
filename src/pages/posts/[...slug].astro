@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import SEO from "../../components/SEO.astro";
 import { getCollection, getEntryBySlug } from "astro:content";
 
 export async function getStaticPaths() {
@@ -20,6 +21,12 @@ if (!post) {
 const { Content } = await post.render();
 ---
 <Layout title={`${post.data.title} — Juan Cruz Miranda`}>
+  <SEO
+    title={post.data.title}
+    description={post.data.description}
+    image="/og-default.png"
+    type="article"
+  />
   <h1>{post.data.title}</h1>
 
   <p style="color:#888; margin-bottom: 1.5rem;">
