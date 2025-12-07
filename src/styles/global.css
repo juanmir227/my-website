@@ -1410,14 +1410,6 @@ footer {
     max-width: 100% !important;
   }
 
-  /* Tablas: scrolleables y no rompen layout */
-  .post-body table {
-    display: block !important;
-    width: 100% !important;
-    overflow-x: auto !important;
-    border-collapse: collapse;
-  }
-
   /* Bloques de código */
   .post-body pre {
     width: 100% !important;
@@ -1445,11 +1437,6 @@ footer {
   word-break: break-word;
 }
 
-.post-body table {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-}
 /* ============================
    MOBILE TYPOGRAPHY TUNING
    ============================ */
