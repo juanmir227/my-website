@@ -341,7 +341,7 @@ footer {
   display: flex;
   justify-content: center;
   gap: 1.4rem;
-  margin-top: 0.8rem;
+  margin-top: 2rem;
 }
 
 .cta-primary,
@@ -417,7 +417,7 @@ footer {
   content: attr(data-perf);
   position: absolute;
   right: -8px;
-  top: -10px;
+  top: -15px;
   font-size: 0.75rem;
   opacity: 0;
   color: var(--accent);
@@ -1266,4 +1266,219 @@ footer {
   height: 0;
   margin: 0;
   padding: 0;
+}
+
+/* =========================================================
+   📱 MOBILE MODE — Ajustes para pantallas menores a 720px
+   ========================================================= */
+@media (max-width: 720px) {
+  /* Reset general */
+  body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  main {
+    padding: 1.4rem 1.2rem;
+  }
+
+  /* Texto más legible en mobile */
+  h1 {
+    font-size: 1.9rem;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+}
+
+/* ===========================
+   MOBILE FIXES — HEADER
+   =========================== */
+@media (max-width: 720px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 0;
+  }
+
+  header .logo {
+    gap: 0.4rem;
+    font-size: 1.15rem;
+  }
+
+  header nav {
+    gap: 1.3rem;
+    font-size: 0.98rem;
+  }
+
+  #netstats {
+    display: none !important;
+  }
+}
+
+/* ===========================
+   MOBILE FIXES — HERO
+   =========================== */
+@media (max-width: 720px) {
+  .hero {
+    padding: 0rem 1rem !important;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem !important;
+    line-height: 1.25;
+  }
+
+  .hero .subtitle {
+    font-size: 1rem !important;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero .description {
+    font-size: 1rem !important;
+    max-width: 95%;
+    margin: 0 auto 1.2rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+/* ===========================
+   MOBILE FIXES — POSTS GRID
+   =========================== */
+@media (max-width: 720px) {
+  .posts-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem;
+  }
+
+  .post-card {
+    padding: 1rem 1.2rem !important;
+  }
+
+  .post-card h2 {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 720px) {
+  header .logo svg {
+    width: 60px;
+    height: 35px;
+  }
+}
+/* =========================================================
+   🔥 MOBILE FIX — ELIMINA TODO SCROLL HORIZONTAL EN POSTS
+   ========================================================= */
+
+@media (max-width: 720px) {
+  /* Fuerza a que el layout no use display:flex side-by-side */
+  .post-layout {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Contenedor principal del post */
+  .post-body {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 1rem !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  /* TODO lo que esté dentro del post nunca puede exceder ancho */
+  .post-body * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Imágenes responsive */
+  .post-body img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+  }
+
+  /* Tablas: scrolleables y no rompen layout */
+  .post-body table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    border-collapse: collapse;
+  }
+
+  /* Bloques de código */
+  .post-body pre {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+    border-radius: 8px !important;
+  }
+
+  /* Botón de copiar dentro del ancho permitido */
+  .code-copy-btn {
+    right: 0.75rem !important;
+  }
+}
+
+.post-body {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.post-body pre,
+.post-body code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.post-body table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+/* ============================
+   MOBILE TYPOGRAPHY TUNING
+   ============================ */
+@media (max-width: 720px) {
+  .post-body {
+    font-size: 0.94rem; /* antes ~1rem → más compacto */
+    line-height: 1.55; /* mejora lectura */
+  }
+
+  .post-body h1 {
+    font-size: 1.6rem; /* antes más grande */
+    line-height: 1.2;
+  }
+
+  .post-body h2 {
+    font-size: 1.35rem;
+  }
+
+  .post-body h3 {
+    font-size: 1.15rem;
+  }
+
+  .post-body pre,
+  .post-body code {
+    font-size: 0.85rem; /* código más chico y controlado */
+    line-height: 1.4;
+  }
+
+  .post-body table {
+    font-size: 0.85rem;
+  }
 }
