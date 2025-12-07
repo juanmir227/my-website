@@ -199,7 +199,7 @@ button:hover {
   margin-left: auto;
   top: 12px;
   right: 18px;
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   color: var(--accent);
   opacity: 0.8;
   pointer-events: none;
