@@ -194,20 +194,21 @@ button:hover {
 
 /* Métricas animadas estilo HFT */
 #netstats {
+  justify-self: end;
   position: static;
   margin-left: auto;
   top: 12px;
   right: 18px;
-  font-size: 0.82rem;
+  font-size: 0.65rem;
   color: var(--accent);
-  opacity: 0.75;
+  opacity: 0.8;
   pointer-events: none;
 }
 
 #netstats::after {
   white-space: nowrap;
   content: "latency=0.18ms • jitter=0.01ms • throughput=5.2Gbps";
-  animation: pingCycle 3s linear infinite;
+  animation: pingCycle 2s linear infinite;
 }
 
 @keyframes pingCycle {
@@ -243,19 +244,17 @@ article:hover {
 }
 /* HEADER — fino, centrado, con menú + netstats */
 header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  padding: 0.65rem 1.5rem; /* barra más fina */
-  font-weight: 600;
-  font-size: 1.05rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  padding: 0.65rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.12);
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.12); /* transparencia suave */
 }
 
 header nav {
@@ -457,7 +456,7 @@ footer {
 .stack-card {
   background: rgba(0, 0, 0, 0.28);
   border-radius: 12px;
-  padding: 1.5rem 1.4rem;
+  padding: 0rem 1.4rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.35);
   position: relative;
@@ -498,8 +497,43 @@ footer {
 
 .stack-card ul {
   list-style: none;
-  margin: 0;
+  margin: 0 0px 22px;
   padding: 0;
+}
+
+/* ============================================
+   LISTAS — Unificar bullets y numeración
+   ============================================ */
+
+.post-body ul,
+.post-body ol {
+  margin: 1rem 0 1.2rem 1.4rem; /* mismo margen izquierdo */
+  padding-left: 2rem; /* indentación consistente */
+  line-height: 1.65;
+  font-size: 1.05rem;
+}
+
+/* viñetas normales */
+.post-body ul li {
+  list-style-type: disc;
+  color: var(--text); /* o var(--text-muted) si querés más suave */
+  margin: 0.35rem 0;
+}
+
+/* listas numeradas */
+.post-body ol li {
+  list-style-type: decimal;
+  color: var(--text);
+  margin: 0.35rem 0;
+}
+
+/* sublistas alineadas correctamente */
+.post-body ul ul,
+.post-body ol ol,
+.post-body ul ol,
+.post-body ol ul {
+  margin-left: 1.1rem;
+  margin-top: 0.3rem;
 }
 
 .stack-card li {
@@ -618,7 +652,7 @@ footer {
 
 .post-card h2 {
   font-size: 1.8rem;
-  margin: 0.3rem 0 0.4rem;
+  margin: 0.3rem 0 0.7rem;
 }
 
 .post-card-desc {
@@ -644,7 +678,7 @@ footer {
 /* ===== CONTACTO ===== */
 .contact {
   margin-top: 3rem;
-  padding-bottom: 3.5rem;
+  padding-bottom: 1rem;
   max-width: 960px; /* ancho cómodo en desktop */
   margin-left: auto; /* centrado horizontal */
   margin-right: auto;
@@ -684,7 +718,7 @@ footer {
 .contact-card {
   background: rgba(0, 0, 0, 0.26);
   border-radius: 12px;
-  padding: 1.5rem 1.4rem;
+  padding: 1rem 1rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
   position: relative;
@@ -827,12 +861,6 @@ footer {
   .contact-channels {
     grid-template-columns: 1fr;
   }
-}
-
-/* --- NUEVO: convertir cada celda en layout horizontal --- */
-.contact-channels li {
-  display: flex;
-  align-items: center;
 }
 
 .channel-link {
@@ -990,25 +1018,130 @@ footer {
   text-align: center;
   opacity: 0;
 }
+
 .post-body {
   max-width: 1000px;
   margin: 0 auto;
   font-size: 1.1rem;
   line-height: 1.75;
 }
+/* Headers elegantes */
+.post-body h2 {
+  font-size: 1.9rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: rgba(51, 215, 248, 0.818);
+  text-shadow: 0 0 12px rgba(78, 168, 255, 0.17);
+}
+
+.post-body h3 {
+  font-size: 1.45rem;
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* bullets personalizados estilo HFT */
+.post-body ul li::marker {
+  color: var(--accent);
+  font-size: 0.9rem;
+}
 
 .post-body pre {
-  background: #0d1117;
-  padding: 1rem 1.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
+  background: rgba(30, 60, 100, 0.22) !important;
+  border: 1px solid rgba(78, 168, 255, 0.25);
+  padding: 1.25rem 1.45rem;
+  border-radius: 12px;
+  margin: 1.7rem 0;
   overflow-x: auto;
-  font-size: 0.95rem;
+  font-size: 1.02rem;
+  font-family: "JetBrains Mono", monospace;
+  box-shadow: 0 0 12px rgba(78, 168, 255, 0.12);
 }
 
 .post-body code {
   font-family: "JetBrains Mono", monospace;
+  padding: 3px 6px;
+  border-radius: 5px;
+  background: rgba(78, 168, 255, 0.12); /* highlight azul suave */
+  font-size: 1rem; /* subido ligeramente */
 }
+
+.post-body pre code {
+  background: none !important;
+  padding: 0;
+  font-size: 1rem; /* consistente con pre */
+}
+
+/* Citas */
+.post-body blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1.6rem 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Imágenes dentro del post */
+.post-body img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin: 1.4rem 0;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.45);
+}
+/* ===== TABLAS con estilo HFT ===== */
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(78, 168, 255, 0.15);
+  background: rgba(10, 15, 25, 0.35); /* azul muy oscuro translúcido */
+  border-radius: 10px;
+  overflow: hidden; /* para aplicar bien los bordes redondeados */
+}
+
+/* Encabezado */
+.post-body th {
+  background: rgba(
+    78,
+    168,
+    255,
+    0.18
+  ); /* igual que fondo de bloques de código */
+  color: var(--accent);
+  padding: 0.7rem 0.9rem;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 1px solid rgba(78, 168, 255, 0.25);
+}
+
+/* Celdas */
+.post-body td {
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+/* Última fila sin borde */
+.post-body tr:last-child td {
+  border-bottom: none;
+}
+
+/* Hover suave en filas */
+.post-body tr:hover td {
+  background: rgba(78, 168, 255, 0.07);
+}
+
+/* Links dentro del post (neutral, sin animaciones molestas) */
+.post-body a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.post-body a:hover {
+  opacity: 0.75;
+}
+
 /* ================================
    FORZAR: desactivar efectos de hover en posts
    ================================ */
@@ -1043,4 +1176,85 @@ footer {
 .post-body *:hover {
   box-shadow: none !important;
   animation: none !important;
+}
+
+/* Separador visual elegante dentro de los posts */
+.post-body hr {
+  border: none;
+  height: 1px;
+  width: 55%; /* no ocupa todo el ancho */
+  margin: 2.4rem auto; /* centrado */
+  background: linear-gradient(
+    90deg,
+    rgba(78, 168, 255, 0) 0%,
+    rgba(78, 168, 255, 0.45) 50%,
+    rgba(78, 168, 255, 0) 100%
+  );
+  box-shadow: 0 0 20px rgba(78, 168, 255, 0.15);
+  opacity: 0.75;
+}
+
+/* ============================================
+   BOTÓN DE COPIAR — para bloques de código
+   ============================================ */
+
+.code-wrapper {
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  background: rgba(78, 168, 255, 0.15);
+  color: var(--accent);
+  border: 1px solid rgba(78, 168, 255, 0.35);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.copy-btn:hover {
+  background: rgba(78, 168, 255, 0.25);
+  filter: brightness(1.15);
+}
+
+.copy-btn.copied {
+  background: rgba(120, 220, 150, 0.3);
+  border-color: rgba(120, 220, 150, 0.7);
+  color: #8fffb2;
+}
+
+.accent-name {
+  color: var(--accent);
+  text-shadow: 0 0 12px rgba(78, 168, 255, 0.4);
+}
+/* Contenedor del logo */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: lef;
+  gap: 1rem; /* ← controla la separación entre ícono y texto */
+}
+.logo span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+
+/* Ícono */
+.logo-hft {
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 6px rgba(78, 168, 255, 0.35));
+  transition: 0.2s ease-out;
+}
+
+/* Efecto sutil al pasar el mouse */
+.logo-hft:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 0 10px rgba(78, 168, 255, 0.55));
 }
