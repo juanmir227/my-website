@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://TU-DOMINIO.com/sitemap-index.xml
+Sitemap: https://juancmiranda.netlify.app/sitemap-index.xml

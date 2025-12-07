@@ -3,6 +3,6 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://TU-DOMINIO.com",
+  site: "https://juancmiranda.netlify.app",
   integrations: [sitemap()],
 });
